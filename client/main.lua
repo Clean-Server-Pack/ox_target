@@ -1,10 +1,15 @@
-if not lib.checkDependency('ox_lib', '3.21.0', true) then return end
-
 lib.locale()
 
 local utils = require 'client.utils'
 local state = require 'client.state'
 local options = require 'client.api'.getTargetOptions()
+
+RegisterNuiCallback('GET_SETTINGS', function(data, cb)
+    cb({
+      primaryColor = GetConvar('clean_lib:primaryColor', 'clean'),
+      primaryShade = GetConvarInt('clean_lib:primaryShade', 9),
+    })
+end)
 
 require 'client.debug'
 require 'client.defaults'
@@ -230,7 +235,7 @@ local function startTargeting()
         end
 
         if hasTarget and (zonesChanged or entityChanged and hasTarget > 1) then
-            SendNuiMessage('{"event": "leftTarget"}')
+            SendNuiMessage('{"action": "leftTarget"}')
 
             if entityChanged then options:wipe() end
 
@@ -297,7 +302,7 @@ local function startTargeting()
             if hasTarget and hidden == totalOptions then
                 if hasTarget and hasTarget ~= 1 then
                     hasTarget = false
-                    SendNuiMessage('{"event": "leftTarget"}')
+                    SendNuiMessage('{"action": "leftTarget"}')
                 end
             elseif menuChanged or hasTarget ~= 1 and hidden ~= totalOptions then
                 hasTarget = options.size
@@ -314,9 +319,11 @@ local function startTargeting()
                 end
 
                 SendNuiMessage(json.encode({
-                    event = 'setTarget',
-                    options = options,
-                    zones = zones,
+                    action = 'setTarget',
+                    data = {
+                      options = options,
+                      zones = zones,
+                    }
                 }, { sort_keys = true }))
             end
 
@@ -339,7 +346,13 @@ local function startTargeting()
     end
 
     state.setNuiFocus(false)
-    SendNuiMessage('{"event": "visible", "state": false}')
+    local data = {
+      action = 'visible',
+      data = {
+        state = false, 
+      }
+    }
+    SendNuiMessage(json.encode(data))
     table.wipe(currentTarget)
     options:wipe()
 
