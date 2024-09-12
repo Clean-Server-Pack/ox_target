@@ -263,8 +263,9 @@ local function startTargeting()
             for i = 1, optionCount do
                 local option = v[i]
                 local hide = shouldHide(option, dist, endCoords, entityHit, entityType, entityModel)
-
+    
                 if option.hide ~= hide then
+                    print('new Options? 1', hide)
                     option.hide = hide
                     newOptions = true
                 end
@@ -284,9 +285,9 @@ local function startTargeting()
             for j = 1, optionCount do
                 local option = zoneOptions[j]
                 local hide = shouldHide(option, distance, endCoords, entityHit)
-
                 if option.hide ~= hide then
                     option.hide = hide
+                    print('newOptions?')
                     newOptions = true
                 end
 
@@ -305,6 +306,7 @@ local function startTargeting()
                     SendNuiMessage('{"action": "leftTarget"}')
                 end
             elseif menuChanged or hasTarget ~= 1 and hidden ~= totalOptions then
+              
                 hasTarget = options.size
 
                 if currentMenu and options.__global[1]?.name ~= 'builtin:goback' then
@@ -317,7 +319,7 @@ local function startTargeting()
                             openMenu = 'home'
                         })
                 end
-
+                print('setting new target', json.encode(zones, {indent=true}))
                 SendNuiMessage(json.encode({
                     action = 'setTarget',
                     data = {

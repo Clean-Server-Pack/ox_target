@@ -33,7 +33,6 @@ export default function MyComponent() {
   });
 
   useNuiEvent('visible', (data: {state: boolean}) => {
-    console.log(data.state);
     setOpened(data.state);
     setTargetActive(false);
     setOptions([]);

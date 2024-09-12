@@ -15,6 +15,7 @@ export default function Options(props:OptionsProps){
         <Option key={index}
           label={option.label}
           icon={option.icon}
+          hide={option.hide}
           type={option.type}
           targetId={option.targetId}
           zoneId={option.zoneId}
