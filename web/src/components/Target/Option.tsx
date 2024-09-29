@@ -32,7 +32,7 @@ export default function Option(props:OptionProps){
       ref={ref}
       align='center'
       gap='xs'
-      p='0.5vh'
+      p='0.6vh'
       bg='rgba(0,0,0,0.5)'
       style={{
         transition: 'all ease-in-out 0.1s',
@@ -43,11 +43,15 @@ export default function Option(props:OptionProps){
         boxShadow:  hovered ? `inset 0 0 0.9vh ${colorWithAlpha(theme.colors[theme.primaryColor][theme.primaryShade as number], 0.8)}` : 'inset 0 0 10px rgba(0,0,0,0.6)',
       }}
       onClick={() => {
+        
         setPointerEvents(false);
-        fetchNui("select", [props.type, props.targetId, props.zoneId]);
+        setTimeout(() => {
+          fetchNui("select", [props.type, props.targetId, props.zoneId]);
+        }, 50);
+        // fetchNui("select", [props.type, props.targetId, props.zoneId]);
         setTimeout(() => {
           setPointerEvents(true);
-        }, 100);
+        }, 200);
       }}
     >
       <FontAwesomeIcon 

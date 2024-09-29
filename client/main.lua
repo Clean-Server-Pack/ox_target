@@ -265,7 +265,7 @@ local function startTargeting()
                 local hide = shouldHide(option, dist, endCoords, entityHit, entityType, entityModel)
     
                 if option.hide ~= hide then
-                    print('new Options? 1', hide)
+                    menuChanged = true
                     option.hide = hide
                     newOptions = true
                 end
@@ -287,8 +287,8 @@ local function startTargeting()
                 local hide = shouldHide(option, distance, endCoords, entityHit)
                 if option.hide ~= hide then
                     option.hide = hide
-                    print('newOptions?')
                     newOptions = true
+                    menuChanged = true
                 end
 
                 if hide then hidden += 1 end
@@ -296,6 +296,7 @@ local function startTargeting()
         end
 
         if newOptions then
+
             if hasTarget == 1 and options.size > 1 then
                 hasTarget = true
             end
@@ -308,18 +309,15 @@ local function startTargeting()
             elseif menuChanged or hasTarget ~= 1 and hidden ~= totalOptions then
               
                 hasTarget = options.size
-
                 if currentMenu and options.__global[1]?.name ~= 'builtin:goback' then
-                    table.insert(options.__global, 1,
-                        {
-                            icon = 'fa-solid fa-circle-chevron-left',
-                            label = locale('go_back'),
-                            name = 'builtin:goback',
-                            menuName = currentMenu,
-                            openMenu = 'home'
-                        })
+                    table.insert(options.__global, 1, {
+                      icon = 'fa-solid fa-circle-chevron-left',
+                      label = locale('go_back'),
+                      name = 'builtin:goback',
+                      menuName = currentMenu,
+                      openMenu = 'home'
+                    })
                 end
-                print('setting new target', json.encode(zones, {indent=true}))
                 SendNuiMessage(json.encode({
                     action = 'setTarget',
                     data = {
