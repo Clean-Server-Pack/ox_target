@@ -21,7 +21,6 @@ RegisterNuiCallback('GET_SETTINGS', function(data, cb)
       "#5c258b"
     }))),
   }
-  print(json.encode(settings, { indent = true }))
   cb(settings)
 end)
 
