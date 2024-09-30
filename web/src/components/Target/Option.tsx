@@ -35,7 +35,7 @@ export default function Option(props:OptionProps){
       p='0.6vh'
       bg='rgba(0,0,0,0.5)'
       style={{
-        transition: 'all ease-in-out 0.1s',
+        transition: 'all ease-in-out 0.2s',
         borderRadius: theme.radius.xs,
         cursor: 'pointer',
         pointerEvents: pointerEvents ? 'auto' : 'none',
@@ -59,7 +59,7 @@ export default function Option(props:OptionProps){
         size='1x' 
         color={hovered ? colorWithAlpha(theme.colors[theme.primaryColor][theme.primaryShade as number], 0.9) : 'white'}
         style={{
-          transition: 'all ease-in-out 0.1s',
+          transition: 'all ease-in-out 0.2s',
           aspectRatio: 1,
         }}
       />
@@ -67,7 +67,7 @@ export default function Option(props:OptionProps){
         size='sm'
         c={hovered ? 'rgba(255,255,255,0.9)' : 'rgba(255,255,255,0.7)'}
         style={{
-          transition: 'all ease-in-out 0.1s',
+          transition: 'all ease-in-out 0.2s',
         }}
       >{props.label}</Text>
     </Flex>

@@ -24,7 +24,7 @@ export default function Eye(props:EyeProps){
         backgroundColor: 'rgba(0,0,0,0.5)',
         
         boxShadow: targetActive ? `inset 0 0 1.3vh ${colorWithAlpha(theme.colors[theme.primaryColor][theme.primaryShade as number], 0.8)}` : 'inset 0 0 20px rgba(0,0,0,0.6)',
-        transition: 'all ease-in-out 0.1s',
+        transition: 'all ease-in-out 0.2s',
         borderRadius: '50%',
       }}
     >
@@ -35,7 +35,7 @@ export default function Eye(props:EyeProps){
         style={{
           padding: '0.7vh',
           aspectRatio: 1,
-          transition: 'all ease-in-out 0.1s',
+          transition: 'all ease-in-out 0.2s',
           // transform: targetActive ? 'rotate(0deg)' : 'rotate(-45deg)',
         }}
       />
