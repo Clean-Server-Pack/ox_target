@@ -30,6 +30,7 @@ function state.isNuiFocused()
 end
 
 ---@param value boolean
+
 function state.setNuiFocus(value, cursor)
     if value then SetCursorLocation(0.5, 0.5) end
 
@@ -37,6 +38,10 @@ function state.setNuiFocus(value, cursor)
     SetNuiFocus(value, cursor or false)
     SetNuiFocusKeepInput(value)
 end
+
+exports('isNuiFocused', function()
+  return state.isNuiFocused()
+end)
 
 local isDisabled = false
 
