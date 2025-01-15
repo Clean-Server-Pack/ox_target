@@ -55,7 +55,7 @@ export default function MyComponent() {
           const targetId = id + 1;
           const targetType = type;
 
-          setOptions((prev) => {
+          setOptions((prev: OptionProps[]) => {
             const newOptions = [...prev];
             newOptions.push({ ...data, targetId, type: targetType });
             return newOptions;  
@@ -71,7 +71,7 @@ export default function MyComponent() {
           const zoneId = i + 1
           const targetType = "zones"
 
-          setOptions((prev) => {
+          setOptions((prev: OptionProps[]) => {
             const newOptions = [...prev];
             newOptions.push({ ...data, targetId, zoneId, type: targetType });
             return newOptions;
@@ -88,6 +88,9 @@ export default function MyComponent() {
         top='50%'
         left='50%'
         gap='xs'
+        style={{
+          userSelect: 'none',
+        }}
       >
         <Eye
           targetActive={targetActive}

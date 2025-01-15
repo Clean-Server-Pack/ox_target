@@ -31,15 +31,15 @@ export default function Option(props:OptionProps){
     <Flex
       ref={ref}
       align='center'
-      gap='xs'
-      p='0.6vh'
+      gap='xxs'
+      p='xs'
       bg='rgba(0,0,0,0.5)'
       style={{
         transition: 'all ease-in-out 0.2s',
-        borderRadius: theme.radius.xs,
+        borderRadius: theme.radius.xxs,
         cursor: 'pointer',
         pointerEvents: pointerEvents ? 'auto' : 'none',
-        outline: hovered? `2px solid ${colorWithAlpha(theme.colors[theme.primaryColor][theme.primaryShade as number], 0.8)}` : 'none',
+        outline: hovered? `0.2vh solid ${colorWithAlpha(theme.colors[theme.primaryColor][theme.primaryShade as number], 0.8)}` : 'none',
         boxShadow:  hovered ? `inset 0 0 0.9vh ${colorWithAlpha(theme.colors[theme.primaryColor][theme.primaryShade as number], 0.8)}` : 'inset 0 0 10px rgba(0,0,0,0.6)',
       }}
       onClick={() => {
@@ -56,15 +56,16 @@ export default function Option(props:OptionProps){
     >
       <FontAwesomeIcon 
         icon={props.icon as IconProp} 
-        size='1x' 
+       
         color={hovered ? colorWithAlpha(theme.colors[theme.primaryColor][theme.primaryShade as number], 0.9) : 'white'}
         style={{
+          fontSize: theme.fontSizes.xs,
           transition: 'all ease-in-out 0.2s',
           aspectRatio: 1,
         }}
       />
       <Text
-        size='sm'
+        size='xs'
         c={hovered ? 'rgba(255,255,255,0.9)' : 'rgba(255,255,255,0.7)'}
         style={{
           transition: 'all ease-in-out 0.2s',

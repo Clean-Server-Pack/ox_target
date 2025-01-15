@@ -9,7 +9,7 @@ export default function Options(props:OptionsProps){
   return (
     <Flex
       direction={'column'}
-      gap='xs'
+      gap='xxs'
     > 
       {props.options.map((option, index) => (
         <Option key={index}
