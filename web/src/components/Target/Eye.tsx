@@ -17,7 +17,7 @@ export default function Eye(props:EyeProps){
   }, [props.targetActive]);
   return ( 
     <Flex
-      mt='0.25vh'
+      // mt='0vh'
       h='fit-content'
       // bg='red'
       
