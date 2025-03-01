@@ -10,7 +10,7 @@ export type EyeProps = {
 
 export default function Eye(props:EyeProps){
   const theme = useMantineTheme();
-  const [targetActive, setTargetActive] = useState(true);
+  const [targetActive, setTargetActive] = useState(false);
   
   useEffect(() => {
     setTargetActive(props.targetActive);
