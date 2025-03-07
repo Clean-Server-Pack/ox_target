@@ -31,16 +31,16 @@ export default function Option(props:OptionProps){
     <Flex
       ref={ref}
       align='center'
-      gap='xxs'
+      gap='xs'
       p='xs'
-      bg='rgba(0,0,0,0.5)'
+      bg={hovered ? 'rgba(0,0,0,0.7)': 'rgba(0,0,0,0.5)'}
       style={{
         transition: 'all ease-in-out 0.2s',
         borderRadius: theme.radius.xxs,
         cursor: 'pointer',
         pointerEvents: pointerEvents ? 'auto' : 'none',
-        outline: hovered? `0.2vh solid ${colorWithAlpha(theme.colors[theme.primaryColor][theme.primaryShade as number], 0.8)}` : 'none',
-        boxShadow:  hovered ? `inset 0 0 0.9vh ${colorWithAlpha(theme.colors[theme.primaryColor][theme.primaryShade as number], 0.8)}` : 'inset 0 0 10px rgba(0,0,0,0.6)',
+        outline: hovered? `0.2vh solid ${colorWithAlpha(theme.colors[theme.primaryColor][theme.primaryShade as number], 0.8)}` : '0.2vh solid rgba(0,0,0,0.1)',
+        boxShadow:  hovered ? `inset 0 0 0.9vh ${colorWithAlpha(theme.colors[theme.primaryColor][theme.primaryShade as number], 0.8)}` : 'inset 0 0 0.1vh rgba(0,0,0,0.6)',
       }}
       onClick={() => {
         
